@@ -1,14 +1,17 @@
-const fs = require("fs");
+const express = require("express");
+const app = express();
+const port = 4000;
 
-const userName = "Taek";
-
-fs.writeFile("test", `name : ${userName}`, (err) => {
-  if (err) {
-    console.log(err);
-    return;
-  }
-
-  console.log("작성 완료");
+app.get("/", (req, res) => {
+  res.send("서버가 실행되었습니다.");
 });
 
-console.log(userName);
+app.get("/login", (req, res) => {
+  res.send("로그인 api환경입니다.");
+});
+
+app.listen(port, () => {
+  console.log(`서버가 실행 되었습니다. http://localhost:${port}`);
+});
+
+console.log(app);
